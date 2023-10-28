@@ -16,7 +16,6 @@ export default function Cart(params) {
     cartItemCount.textContent = itemCount;
 
     cartItems.forEach((item) => {
-      console.log("item", item);
       const itemTotal = item.price * item.quantity;
       cartTotal += itemTotal;
       cartItemsHTML += `<div class="cart-item">

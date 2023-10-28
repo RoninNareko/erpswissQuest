@@ -74,6 +74,8 @@ function fetchProductsByCategoryAndSort(category, sortBy) {
   xhr.send();
 }
 
+fetchProducts();
+
 document
   .querySelector(".categories-section ul")
   .addEventListener("click", function (e) {
@@ -99,5 +101,3 @@ document
       fetchProductsByCategoryAndSort(selectedCategory, selectedSort);
     }
   });
-
-fetchProducts();

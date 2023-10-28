@@ -2,7 +2,6 @@
   .cart-total {
     font-size: 12px;
   }
-
   .dropdown-item {
     font-size: 12px;
     padding-left: 10px;
@@ -25,12 +24,18 @@
     width: auto;
     padding: 30px;
   }
+  .product {
+    width: 300px;
+  }
   .cart-item {
     padding: 5px;
   }
   .quantity {
     width: 59px;
     margin: 5px 6px;
+  }
+  .product-container {
+    padding-left: 4vw;
   }
   .categories-section > ul {
     display: flex;
