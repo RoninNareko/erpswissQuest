@@ -9,6 +9,11 @@ function updateCart() {
   let cartItemsHTML = "";
   cartTotal = 0;
 
+  const cartItemCount = document.querySelector(".cart-item-count");
+  const itemCount = cartItems.length; // Replace with your actual cart items array
+
+  cartItemCount.textContent = itemCount;
+
   cartItems.forEach((item) => {
     const itemTotal = item.price * item.quantity;
     cartTotal += itemTotal;
