@@ -101,6 +101,7 @@ main.mainContainer {
 
 .cart .cart-item-count {
   background-color: #017e84;
+  display: block;
   color: white;
   border-radius: 50%;
   padding: 4px 8px;

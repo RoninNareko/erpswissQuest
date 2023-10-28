@@ -1,7 +1,7 @@
 let cartItems = [];
 let cartTotal = 0;
 
-export default function Cart(params) {
+export default function handleCartInteractions() {
   const cart = document.querySelector(".cart");
   const products = document.querySelectorAll(".product");
   const total = document.getElementById("total");
