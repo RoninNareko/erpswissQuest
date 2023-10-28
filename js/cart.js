@@ -1,23 +1,24 @@
-const cart = document.querySelector(".cart");
-const products = document.querySelectorAll(".product");
-const total = document.getElementById("total");
+export default function Cart(params) {
+  const cart = document.querySelector(".cart");
+  const products = document.querySelectorAll(".product");
+  const total = document.getElementById("total");
 
-let cartItems = [];
-let cartTotal = 0;
+  let cartItems = [];
+  let cartTotal = 0;
 
-function updateCart() {
-  let cartItemsHTML = "";
-  cartTotal = 0;
+  function updateCart() {
+    let cartItemsHTML = "";
+    cartTotal = 0;
 
-  const cartItemCount = document.querySelector(".cart-item-count");
-  const itemCount = cartItems.length; // Replace with your actual cart items array
+    const cartItemCount = document.querySelector(".cart-item-count");
+    const itemCount = cartItems.length; // Replace with your actual cart items array
 
-  cartItemCount.textContent = itemCount;
+    cartItemCount.textContent = itemCount;
 
-  cartItems.forEach((item) => {
-    const itemTotal = item.price * item.quantity;
-    cartTotal += itemTotal;
-    cartItemsHTML += `
+    cartItems.forEach((item) => {
+      const itemTotal = item.price * item.quantity;
+      cartTotal += itemTotal;
+      cartItemsHTML += `
             <div class="cart-item">
                 ${item.name} - $${item.price} x 
                 <input type="number" class="quantity" value="${
@@ -29,59 +30,62 @@ function updateCart() {
                 }">Remove</button>
             </div>
         `;
-  });
-
-  total.textContent = cartTotal.toFixed(2);
-  document.querySelector(".cart-items-list").innerHTML = cartItemsHTML;
-
-  // Add event listeners to quantity input fields for dynamic updates
-  document.querySelectorAll(".quantity").forEach((quantityInput) => {
-    quantityInput.addEventListener("input", (e) => {
-      const name = e.target.getAttribute("data-name");
-      const newQuantity = parseInt(e.target.value, 10);
-
-      // Update the cartItems array with the new quantity
-      const itemToUpdate = cartItems.find((item) => item.name === name);
-      if (itemToUpdate) {
-        itemToUpdate.quantity = newQuantity;
-        updateCart();
-      }
     });
-  });
-}
 
-function addToCart(name, price) {
-  const existingItem = cartItems.find((item) => item.name === name);
-  if (existingItem) {
-    existingItem.quantity++;
-  } else {
-    cartItems.push({ name, price, quantity: 1 });
+    total.textContent = cartTotal.toFixed(2);
+    document.querySelector(".cart-items-list").innerHTML = cartItemsHTML;
+
+    // Add event listeners to quantity input fields for dynamic updates
+    document.querySelectorAll(".quantity").forEach((quantityInput) => {
+      quantityInput.addEventListener("input", (e) => {
+        const name = e.target.getAttribute("data-name");
+        const newQuantity = parseInt(e.target.value, 10);
+
+        // Update the cartItems array with the new quantity
+        const itemToUpdate = cartItems.find((item) => item.name === name);
+        if (itemToUpdate) {
+          itemToUpdate.quantity = newQuantity;
+          updateCart();
+        }
+      });
+    });
   }
-  updateCart();
-}
 
-function removeFromCart(name) {
-  const index = cartItems.findIndex((item) => item.name === name);
-  if (index !== -1) {
-    cartItems.splice(index, 1);
+  function addToCart(name, price) {
+    const existingItem = cartItems.find((item) => item.name === name);
+    if (existingItem) {
+      existingItem.quantity++;
+    } else {
+      cartItems.push({ name, price, quantity: 1 });
+    }
     updateCart();
   }
-}
 
-products.forEach((product, index) => {
-  const addToCartButton = product.querySelector(".add-to-cart");
-  const productName = product.querySelector("h6 a").textContent;
-  const productPriceText = product.querySelector("span span").textContent;
-  const productPrice = parseFloat(productPriceText.replace("US$", ""));
-
-  addToCartButton.addEventListener("click", () => {
-    addToCart(productName, productPrice);
-  });
-});
-
-cart.addEventListener("click", (e) => {
-  if (e.target && e.target.className === "remove-from-cart") {
-    const productName = e.target.getAttribute("data-name");
-    removeFromCart(productName);
+  function removeFromCart(name) {
+    const index = cartItems.findIndex((item) => item.name === name);
+    if (index !== -1) {
+      cartItems.splice(index, 1);
+      updateCart();
+    }
   }
-});
+  console.log(products);
+  products.forEach((product, index) => {
+    console.log("product", product);
+    const addToCartButton = product.querySelector(".add-to-cart");
+    const productName = product.querySelector("h6 a").textContent;
+    const productPriceText = product.querySelector("span span").textContent;
+    const productPrice = parseFloat(productPriceText.replace("US$", ""));
+    console.log(addToCartButton[0]);
+    addToCartButton.addEventListener("click", () => {
+      console.log("click");
+      addToCart(productName, productPrice);
+    });
+  });
+
+  cart.addEventListener("click", (e) => {
+    if (e.target && e.target.className === "remove-from-cart") {
+      const productName = e.target.getAttribute("data-name");
+      removeFromCart(productName);
+    }
+  });
+}
