@@ -115,6 +115,7 @@ main.mainContainer {
   top: 100%;
   border-radius: 5px;
   padding: 40px;
+  z-index: 100;
   width: max-content;
   background-color: #fff;
   border: 1px solid #ccc;
@@ -125,7 +126,6 @@ main.mainContainer {
 
 .cart:hover .cart-items-list {
   display: block;
-  z-index: 100;
 }
 
 .cart-item {
