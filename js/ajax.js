@@ -1,5 +1,10 @@
 import Cart from "./cart.js";
 
+const globalData = {
+  selectedCategory: null, // Выбранная категория
+  sortedBy: null, // Выбранный фильтр
+};
+
 function fetchProducts() {
   const apiUrl = "https://fakestoreapi.com/products";
   const productContainer = document.querySelector(".product-container");
@@ -50,9 +55,17 @@ function fetchProducts() {
 }
 
 // Функция для получения продуктов по категории
-function fetchProductsByCategory(category) {
-  console.log("category", category);
-  const apiUrl = `https://fakestoreapi.com/products/category/${category}`;
+function fetchProductsByCategoryAndSort(category, sortBy) {
+  let apiUrl = `https://fakestoreapi.com/products`;
+
+  if (category && category !== "all") {
+    apiUrl += `/category/${category}`;
+  }
+
+  if (sortBy) {
+    apiUrl += `?sort=${sortBy}`;
+  }
+  console.log(apiUrl, category, sortBy);
   const productContainer = document.querySelector(".product-container");
 
   // Очистка контейнера перед обновлением
@@ -65,7 +78,7 @@ function fetchProductsByCategory(category) {
   xhr.onload = function () {
     if (xhr.status === 200) {
       const products = JSON.parse(xhr.responseText);
-      console.log("cats prod", products);
+
       // Добавляем каждый продукт как карточку на страницу
       products.forEach((product) => {
         const productItemHTML = `
@@ -99,7 +112,7 @@ function fetchProductsByCategory(category) {
   xhr.send();
 }
 
-// Обработчик клика по категории
+// Обработчик клика по категории и сортировке
 document
   .querySelector(".categories-section ul")
   .addEventListener("click", function (e) {
@@ -107,10 +120,24 @@ document
     if (e.target.tagName === "A") {
       const selectedCategory = e.target.getAttribute("data-category");
       if (selectedCategory) {
-        fetchProductsByCategory(selectedCategory);
+        globalData.selectedCategory = selectedCategory; // Обновляем выбранную категорию
+        const sortBy = globalData.sortedBy; // Получаем выбранный способ сортировки
+        fetchProductsByCategoryAndSort(selectedCategory, sortBy); // Выполняем запрос для новой категории с сортировкой
       }
     }
   });
 
+// Обработчик для выбора сортировки
+document
+  .querySelector(".dropdown-menu")
+  .addEventListener("click", function (e) {
+    e.preventDefault();
+    if (e.target.tagName === "A") {
+      const selectedSort = e.target.getAttribute("data-sort");
+      globalData.sortedBy = selectedSort;
+      const selectedCategory = globalData.selectedCategory;
+      fetchProductsByCategoryAndSort(selectedCategory, selectedSort); // Выполняем сортировку для текущей категории
+    }
+  });
 // Вызов функции для получения и отображения продуктов
 fetchProducts();

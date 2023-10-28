@@ -1,10 +1,10 @@
+let cartItems = [];
+let cartTotal = 0;
+
 export default function Cart(params) {
   const cart = document.querySelector(".cart");
   const products = document.querySelectorAll(".product");
   const total = document.getElementById("total");
-
-  let cartItems = [];
-  let cartTotal = 0;
 
   function updateCart() {
     let cartItemsHTML = "";
@@ -68,16 +68,13 @@ export default function Cart(params) {
       updateCart();
     }
   }
-  console.log(products);
+
   products.forEach((product, index) => {
-    console.log("product", product);
     const addToCartButton = product.querySelector(".add-to-cart");
     const productName = product.querySelector("h6 a").textContent;
     const productPriceText = product.querySelector("span span").textContent;
     const productPrice = parseFloat(productPriceText.replace("US$", ""));
-    console.log(addToCartButton[0]);
     addToCartButton.addEventListener("click", () => {
-      console.log("click");
       addToCart(productName, productPrice);
     });
   });
