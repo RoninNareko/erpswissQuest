@@ -106,7 +106,9 @@ main.mainContainer {
   display: none; /* Hide the item list by default */
   position: absolute;
   top: 100%;
-  right: 0;
+  z-index: 100;
+  padding: 10px;
+  width: max-content;
   background-color: #fff;
   border: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -116,4 +118,28 @@ main.mainContainer {
 
 .cart:hover .cart-items-list {
   display: block;
+}
+
+.cart-item {
+  padding: 5px;
+  margin: 5px 0;
+}
+
+.cart-item button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.quantity {
+  width: 40px;
+  text-align: center;
+  margin: 0 5px;
+}
+
+.cart-total {
+  margin-left: 5px;
+  margin-right: 5px;
 }

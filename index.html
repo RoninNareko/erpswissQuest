@@ -30,10 +30,14 @@
                         <!-- You can use a shopping cart icon font or an image -->
                         <span class="cart-item-count">0</span>
                         <div class="cart-items-list">
-                            <h1>ds</h1>
+                            <p>Empity</p>
                             <!-- Cart items will be displayed here -->
                         </div>
+                        <div class="cart-total">
+                            Total: $<span id="total">0.00</span>
+                        </div>
                     </div>
+
                 </div>
                 <div class="sortCnt">
                     <p>
@@ -64,7 +68,7 @@
             </section>
             <div class="card-grid">
 
-                <div class="card" style="width: 18rem;">
+                <div class="card product" style="width: 18rem;">
                     <img class="card-img-top"
                         src="https://odoocdn.com/web/image/product.template/12878/image_512/%5BSCUF%5D%20Scale-Up%21%20Business%20Game%20%5BFR%5D?unique=4e04c3f"
                         alt="Card image cap">
@@ -79,19 +83,42 @@
                                 <div></div>
                                 <div>
                                     <span>US$&nbsp;<span>24,37</span></span>
-                                    <button type="button" class="btn btn-primary btn-sm">Add to Cart</button>
+                                    <button type="button" class="btn add-to-cart btn-primary btn-sm">Add to
+                                        Cart</button>
                                 </div>
                             </div>
                         </div>
 
                     </div>
                 </div>
+                <div class="card product" style="width: 18rem;">
+                    <img class="card-img-top"
+                        src="https://odoocdn.com/web/image/product.template/12878/image_512/%5BSCUF%5D%20Scale-Up%21%20Business%20Game%20%5BFR%5D?unique=4e04c3f"
+                        alt="Card image cap">
+                    <div class="card-body">
+                        <div>
+                            <div>
+                                <h6>
+                                    <a>kek Business Game [FR]</a>
+                                </h6>
+                            </div>
+                            <div>
+                                <div></div>
+                                <div>
+                                    <span>US$&nbsp;<span>24,37</span></span>
+                                    <button type="button" class="btn add-to-cart btn-primary btn-sm">Add to
+                                        Cart</button>
+                                </div>
+                            </div>
+                        </div>
 
+                    </div>
+                </div>
             </div>
         </div>
     </main>
 
-
+    <script src="./js/cart.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
