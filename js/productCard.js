@@ -1,6 +1,6 @@
 function createProductCard(product) {
   return `
-        <div class="card product" style="width: 18rem;">
+        <div class="card product">
             <img class="card-img-top" src="${product.image}" alt="${product.title}">
             <div class="card-body">
                 <div>

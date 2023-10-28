@@ -16,24 +16,33 @@ export default function Cart(params) {
     cartItemCount.textContent = itemCount;
 
     cartItems.forEach((item) => {
+      console.log("item", item);
       const itemTotal = item.price * item.quantity;
       cartTotal += itemTotal;
-      cartItemsHTML += `
-            <div class="cart-item">
-                ${item.name} - $${item.price} x 
-                <input type="number" class="quantity" value="${
-                  item.quantity
-                }" min="1" data-name="${item.name}">
-                = $${itemTotal.toFixed(2)}
-                <button class="remove-from-cart" data-name="${
-                  item.name
-                }">Remove</button>
-            </div>
-        `;
+      cartItemsHTML += `<div class="cart-item">
+        <img src="${item.image.src}" alt="${
+        item.name
+      }" class="cart-product-image">
+        ${item.name} - $${item.price} x 
+        <input type="number" class="quantity" value="${
+          item.quantity
+        }" min="1" data-name="${item.name}">
+        = $${itemTotal.toFixed(2)}
+        <button class="remove-from-cart" data-name="${
+          item.name
+        }">Remove</button>
+      </div>
+    `;
     });
 
     total.textContent = cartTotal.toFixed(2);
-    document.querySelector(".cart-items-list").innerHTML = cartItemsHTML;
+    const cartItemsList = document.querySelector(".cart-items-list");
+
+    if (!cartItems.length) {
+      cartItemsList.innerHTML = `<p>Select a product</p>`;
+    } else {
+      cartItemsList.innerHTML = cartItemsHTML;
+    }
 
     document.querySelectorAll(".quantity").forEach((quantityInput) => {
       quantityInput.addEventListener("input", (e) => {
@@ -49,12 +58,12 @@ export default function Cart(params) {
     });
   }
 
-  function addToCart(name, price) {
+  function addToCart(name, price, image) {
     const existingItem = cartItems.find((item) => item.name === name);
     if (existingItem) {
       existingItem.quantity++;
     } else {
-      cartItems.push({ name, price, quantity: 1 });
+      cartItems.push({ name, price, image, quantity: 1 });
     }
     updateCart();
   }
@@ -71,9 +80,10 @@ export default function Cart(params) {
     const addToCartButton = product.querySelector(".add-to-cart");
     const productName = product.querySelector("h6 a").textContent;
     const productPriceText = product.querySelector("span span").textContent;
+    const productImage = product.querySelector(".card.product .card-img-top");
     const productPrice = parseFloat(productPriceText.replace("US$", ""));
     addToCartButton.addEventListener("click", () => {
-      addToCart(productName, productPrice);
+      addToCart(productName, productPrice, productImage);
     });
   });
 

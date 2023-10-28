@@ -2,6 +2,7 @@
   .cart-total {
     font-size: 12px;
   }
+
   .dropdown-item {
     font-size: 12px;
     padding-left: 10px;
@@ -22,13 +23,14 @@
 @media (max-width: 700px) {
   .cart-items-list {
     width: auto;
+    padding: 30px;
   }
   .cart-item {
     padding: 5px;
   }
   .quantity {
-    width: 30px;
-    margin: 0 3px;
+    width: 59px;
+    margin: 5px 6px;
   }
   .categories-section > ul {
     display: flex;
