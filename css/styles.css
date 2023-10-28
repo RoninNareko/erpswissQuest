@@ -1,0 +1,119 @@
+.controls-section {
+  display: flex;
+  justify-content: space-evenly;
+}
+.sortCnt {
+  display: flex;
+}
+.controls-section > div > p {
+  margin-right: 5px;
+  line-height: 37px;
+  margin-bottom: 0;
+  color: rgba(52, 58, 64, 0.7) !important;
+  opacity: 0.8;
+  font-weight: normal;
+}
+
+.controls-btn {
+  color: #212529;
+  background-color: #f8f9fa !important;
+  border-color: #f8f9fa;
+  font-weight: 600;
+  padding-left: 15px;
+}
+.controls-btn:hover,
+.controls-btn:active {
+  color: #212529;
+  background-color: #f9fafb;
+  border-color: #f8f9fa;
+  box-shadow: #b2b8bd;
+}
+
+.controls-btn:focus {
+  color: #212529;
+  background-color: #f9fafb;
+  border-color: #f9fafb;
+  box-shadow: 0 0 0 0.25rem rgba(216, 217, 219, 0.5);
+}
+.controls-section > .btn-group > .dropdown-menu a {
+  color: black;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+main.mainContainer {
+  padding-top: 20px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+.categories-section {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.categories-section > ul {
+  display: flex;
+  list-style-type: none;
+}
+.categories-section > ul li {
+  margin-right: 50px;
+}
+.categories-section > ul li > a {
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 18px;
+  color: #212529;
+}
+.context {
+  max-width: 1320px;
+}
+/* Create a grid container with 4 columns */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.card-body h6 {
+  color: #017e84;
+}
+.btn-sm {
+  background-color: #017e84;
+  border-color: #017e84;
+  color: #f8f9fa;
+}
+
+.cart {
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  align-items: center;
+}
+
+.cart i {
+  font-size: 24px; /* Adjust the size to your preference */
+  margin-right: 5px; /* Adds spacing between the icon and count */
+}
+
+.cart .cart-item-count {
+  background-color: #ff5722; /* Background color for the count */
+  color: #fff; /* Text color for the count */
+  border-radius: 50%; /* Makes it a circle */
+  padding: 4px 8px; /* Adjust padding as needed */
+  font-size: 14px; /* Adjust the size to your preference */
+}
+.cart-items-list {
+  display: none; /* Hide the item list by default */
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-height: 200px; /* Adjust the max height as needed */
+  overflow-y: auto;
+}
+
+.cart:hover .cart-items-list {
+  display: block;
+}
