@@ -11,7 +11,7 @@ export default function Cart(params) {
     cartTotal = 0;
 
     const cartItemCount = document.querySelector(".cart-item-count");
-    const itemCount = cartItems.length; // Replace with your actual cart items array
+    const itemCount = cartItems.length;
 
     cartItemCount.textContent = itemCount;
 
@@ -35,13 +35,11 @@ export default function Cart(params) {
     total.textContent = cartTotal.toFixed(2);
     document.querySelector(".cart-items-list").innerHTML = cartItemsHTML;
 
-    // Add event listeners to quantity input fields for dynamic updates
     document.querySelectorAll(".quantity").forEach((quantityInput) => {
       quantityInput.addEventListener("input", (e) => {
         const name = e.target.getAttribute("data-name");
         const newQuantity = parseInt(e.target.value, 10);
 
-        // Update the cartItems array with the new quantity
         const itemToUpdate = cartItems.find((item) => item.name === name);
         if (itemToUpdate) {
           itemToUpdate.quantity = newQuantity;

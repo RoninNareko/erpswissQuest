@@ -40,7 +40,7 @@ function fetchProductsByCategoryAndSort(category, sortBy) {
     apiUrl += `/category/${category}`;
   }
 
-  if (sortBy) {
+  if (sortBy != "title-desc" && sortBy != "title-asc") {
     apiUrl += `?sort=${sortBy}`;
   }
   console.log(apiUrl, category, sortBy);
@@ -55,6 +55,11 @@ function fetchProductsByCategoryAndSort(category, sortBy) {
     if (xhr.status === 200) {
       const products = JSON.parse(xhr.responseText);
 
+      if (sortBy === "title-asc") {
+        products.sort((a, b) => a.title.localeCompare(b.title));
+      } else if (sortBy === "title-desc") {
+        products.sort((a, b) => b.title.localeCompare(a.title));
+      }
       products.forEach((product) => {
         const productItemHTML = createProductCard(product);
 
