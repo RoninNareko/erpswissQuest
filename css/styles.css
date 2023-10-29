@@ -76,6 +76,8 @@ main.mainContainer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
+  justify-items: center;
+  padding: 5px 10px;
 }
 
 .card-body h6 {
@@ -145,7 +147,7 @@ main.mainContainer {
 .quantity {
   width: 40px;
   text-align: center;
-  margin: 0 5px;
+  margin-bottom: 10px;
 }
 
 .cart-total {
