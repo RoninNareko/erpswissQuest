@@ -1,4 +1,8 @@
-# Fake Store API - https://fakestoreapi.com/
+![Project Screenshot](https://i.imgur.com/T3XJOin.png)
+
+# ERPSWISS-QUEST
+Fake Store API - https://fakestoreapi.com/
+<br/>
 Design Reference - https://www.odoo.com/ru_RU/shop
 
 ## Introduction
